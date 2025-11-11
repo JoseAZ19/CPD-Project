@@ -11,7 +11,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     line-height: 1.6;
-    color: #333333;
+    color: #333;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -19,6 +19,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Fondo principal */
 body::before {
     content: "";
     position: fixed;
@@ -26,8 +27,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:url("../Imagenes/main page art3.jpg");
+    background-image: url("../Imagenes/main page art3.jpg");
     background-size: cover;
+    background-position: center;
     z-index: -1;
 }
 
@@ -42,23 +44,22 @@ body::after {
     z-index: -1;
 }
 
-/* Estilos generales para las secciones */
+/* Secciones generales */
 .section {
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
     min-height: 100vh;
 }
-
 .section.visible {
     opacity: 1;
 }
 
+/* Texto animado */
 .text-animate {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
-
 .text-animate.visible {
     opacity: 1;
     transform: translateY(0);
@@ -78,6 +79,7 @@ header {
     align-items: center;
 }
 
+/* Contenedor del header */
 .header-container {
     display: flex;
     align-items: center;
@@ -87,9 +89,10 @@ header {
     padding: 0 20px;
 }
 
+/* Botón de Instagram */
 .instagram-btn {
     background-color: #0c0c0c;
-    color: white;
+    color: #fff;
     padding: 10px 12px;
     text-decoration: none;
     border-radius: 50%;
@@ -97,31 +100,51 @@ header {
     font-size: 18px;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
-    text-align: center;
 }
-
 .instagram-btn i {
     margin-right: 1px;
 }
 
+/* Navegación */
 nav {
-    scroll-margin-block-end: auto;
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul li {
+    margin: 0 50px;
+    display: inline;
+}
+nav ul li a {
+    color: #0d0c0c;
+    text-decoration: none;
+    font-size: 1.4em;
+    font-family: Impact, sans-serif;
+}
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
+/* Logo */
 .logo-link {
     position: relative;
     display: inline-block;
 }
-
 .logo {
     width: 60px;
     height: auto;
     display: block;
     transition: all 0.3s ease;
 }
-
 .logo-link::after {
     content: "";
     display: block;
@@ -134,73 +157,27 @@ nav {
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
-
 .logo-link:hover::after {
     transform: scaleX(1);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-/* Navegación */
-nav {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 50px;
-    display: inline;
-}
-
-nav ul li a {
-    color: #0d0c0c;
-    text-decoration: none;
-    font-size: 1.4em;
-    font-family: Impact;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Secciones */
-section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-/* Sección principal */
+/* Sección principal (Home) */
 .main {
     background-size: cover;
     background-position: center;
     color: #fff;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-
 .main h2 {
     margin-bottom: 20px;
     font-size: 8em;
     color: #f7f6f6;
-    text-align: center;
 }
-
 .main p {
     margin-bottom: 20px;
     font-size: 3em;
@@ -208,13 +185,15 @@ section {
     color: #e6531e;
 }
 
+
 /* Soccer */
 .Soccer {
     background-image: url("../Imagenes/Soccer.jpg");
     background-color: #f7f7f7;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
-    margin: 0;
     text-align: center;
 }
 
@@ -233,6 +212,8 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .course-info {
@@ -269,6 +250,7 @@ section {
     display: block;
 }
 
+/* Botones del carrusel */
 button.prev,
 button.next {
     position: absolute;
@@ -282,18 +264,23 @@ button.next {
     z-index: 10;
     font-size: 1.5rem;
 }
-
 button.prev { left: 0; }
 button.next { right: 0; }
-button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
+button.prev:hover,
+button.next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
 
 /* Tutoring */
 .Tutoring {
-    background-image: url("../Imagenes/.jpg");
+    background-image: url("../Imagenes/.jpg"); /* ✅ restaurado */
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: #eee;
     padding: 20px;
     margin: 0;
+    text-align: center;
 }
 
 .Tutoring h2 {
@@ -315,9 +302,17 @@ button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
     align-items: center;
 }
 
-.course-info-t h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
-.course-info-t p { font-size: 0.875rem; text-align: center; margin-bottom: 0.5rem; }
+.course-info-t h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+.course-info-t p {
+    font-size: 0.875rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
 
+/* Botón general Apply */
 .apply-button {
     display: inline-block;
     padding: 10px 20px;
@@ -329,13 +324,17 @@ button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-.apply-button:hover { background-color: #d14919; }
+.apply-button:hover {
+    background-color: #d14919;
+}
 
 /* Basketball */
 .Basketball {
     background-image: url("../Imagenes/Basketball.jpg");
     background-color: #f7f7f7;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
 }
@@ -355,6 +354,8 @@ button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
     background-image: url("../Imagenes/Fitness.jpg");
     background-color: #f7f7f7;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
 }
@@ -368,59 +369,111 @@ button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
     color: #e6531e;
 }
 
-/* About Us */
+/* ✅ Adaptación SOLO para móvil */
+@media (max-width: 768px) {
+    .soccer-container {
+        flex-direction: column;
+    }
+
+    .image-slider {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .course-info {
+        max-width: 90%;
+    }
+
+    .Tutoring h2 {
+        font-size: 3em;
+    }
+
+    .Basketball h2,
+    .Fitness h2 {
+        font-size: 5em;
+    }
+
+    .Basketball p,
+    .Fitness p {
+        font-size: 2em;
+    }
+}
+
+
+/* ===========================
+   ABOUT US
+=========================== */
 .about-us {
     background-image: url("../Imagenes/S1.jpg");
-    background-color: #f7f7f7;
+    background-color: #0a0a0a;
     background-size: cover;
-    padding: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
     text-align: center;
 }
+
 .about-us h2 {
     font-size: 3em;
     color: #e6531e;
+    margin-bottom: 20px;
 }
+
 .about-us p {
     margin-bottom: 20px;
     font-size: 1.2em;
     color: #fafafa;
+    line-height: 1.6;
 }
+
 .about-us-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    align-items: flex-start;
 }
 
-/* Contact */
+
+/* ===========================
+   CONTACT
+=========================== */
 .Contact {
     background-image: url("../Imagenes/S4.1.jpg");
     background-color: #0a0a0a;
     background-size: cover;
-    padding: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
     text-align: center;
 }
 
-/* Contact session */
 .contact-container {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    flex-wrap: wrap;
     gap: 40px;
+    margin-top: 20px;
 }
 
 .contact-item {
     text-align: center;
-    background-color: #060606;
-    opacity: 0.8;
-    padding: 80px;
+    background-color: rgba(6, 6, 6, 0.85);
+    padding: 60px;
     border-radius: 10px;
-    width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 28%;
+    min-width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     font-family: Arial, sans-serif;
     font-size: 18px;
     line-height: 1.5;
-    color: #d4736f;
+    color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(12, 12, 12, 0.9);
 }
 
 .contact-item i {
@@ -435,73 +488,77 @@ button.prev:hover, button.next:hover { background: rgba(0, 0, 0, 0.8); }
     color: #ffffff;
 }
 
-/* Footer */
+
+/* ===========================
+   FOOTER
+=========================== */
 footer {
     background: #121212;
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    border-top: 4px solid #e6531e;
 }
 footer p {
     margin: 0;
     font-size: 1em;
     background: #e6531e;
+    padding: 10px 0;
 }
 
 
-.align-right {
-    text-align: right;
-}
+/* ===========================
+   ALINEACIONES
+=========================== */
+.align-right { text-align: right; }
+.center { text-align: center; }
+.align-left { text-align: left; }
 
-.center {
-    text-align: center;
-}
 
-.align-left {
-    text-align: left;
-}
-
-/* Animaciones de transición */
+/* ===========================
+   ANIMACIONES
+=========================== */
 .section {
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
-
 .section.visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
-/* Añadir animación de deslizamiento si lo prefieres */
 .section.slide-in {
     transform: translateY(50px);
     transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
 }
-
 .section.slide-in.visible {
     transform: translateY(0);
     opacity: 1;
 }
 
-/* Animaciones de transición para el texto */
 .text-animate {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
-
 .text-animate.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Estilos del formulario */
+
+/* ===========================
+   FORMULARIO
+=========================== */
 .application-form {
     background: #040404;
-    padding: 20px;
-    margin: 20px 0;
+    padding: 20px 40px;
+    margin: 40px auto;
     width: 100%;
+    max-width: 900px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -510,9 +567,11 @@ footer p {
 
 .application-form h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 2em;
-    color: #333;
+    color: #e6531e;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .form-row {
@@ -533,6 +592,7 @@ footer p {
 .form-group label {
     margin-bottom: 5px;
     font-weight: bold;
+    color: #fff;
 }
 
 .form-group input,
@@ -541,8 +601,18 @@ footer p {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 1em;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #e6531e;
+    outline: none;
 }
 
 .form-group textarea {
@@ -550,42 +620,84 @@ footer p {
     height: 100px;
 }
 
+/* ===========================
+   RESPONSIVE (solo móvil)
+=========================== */
+@media (max-width: 768px) {
+    .about-us-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-us h2 {
+        font-size: 2em;
+    }
+
+    .about-us p {
+        font-size: 1em;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-item {
+        width: 90%;
+        padding: 40px;
+    }
+
+    .application-form {
+        padding: 15px 20px;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+}
+
+
+/* ===========================
+   BOTÓN DE ENVÍO
+=========================== */
 button[type="submit"] {
-    padding: 10px 20px;
+    padding: 10px 25px;
     background: #e6531e;
     color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 1.2em;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button[type="submit"]:hover {
     background: #d1431a;
+    transform: scale(1.05);
 }
 
-/* Estilos de la sección de solicitud */
+
+/* ===========================
+   SECCIÓN APPLY (GENERAL)
+=========================== */
 .apply {
-    padding: 20px;
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #0a0a0a;
 }
 
 .apply h2 {
-    font-size: 2em;
-    color: #333;
+    font-size: 2.5em;
+    color: #e6531e;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* Pie de página */
-footer {
-    background: #121212;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
 
-/* APPLY */
+/* ===========================
+   BOTÓN APPLY
+=========================== */
 .apply-button {
     display: inline-block;
     padding: 10px 20px;
@@ -595,37 +707,44 @@ footer {
     text-decoration: none;
     font-size: 1.2em;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .apply-button:hover {
     background-color: #d14919;
+    transform: scale(1.05);
 }
 
+
+/* ===========================
+   APPLY - SOCCER
+=========================== */
 .apply.section {
     background-image: url("../Imagenes/Soccer.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 50px;
+    padding: 60px 20px;
     text-align: center;
 }
 
+
+/* ===========================
+   APPLY - TUTORING
+=========================== */
 .apply.section-t {
-    background-image: url("../Imagenes/.jpg");
+    background-image: url("../Imagenes/Tutoring.jpg"); /* ✅ Corregido */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 50px;
+    padding: 60px 20px;
     text-align: center;
 }
 
-.apply h2 {
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    color: #e6531e;
-}
 
+/* ===========================
+   FORMULARIO DENTRO DE APPLY
+=========================== */
 .form-group {
     margin-bottom: 20px;
 }
@@ -634,6 +753,7 @@ footer {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #fff;
 }
 
 .form-group input,
@@ -643,39 +763,100 @@ footer {
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease;
 }
 
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #e6531e;
+    outline: none;
+}
+
+/* Ajuste general de botón */
 button[type="submit"] {
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 12px 28px;
     background-color: #e6531e;
     color: #fff;
     font-size: 1.2em;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button[type="submit"]:hover {
     background-color: #d14919;
+    transform: scale(1.05);
 }
 
-/* Contact session */
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    background: #121212;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    border-top: 4px solid #e6531e;
+}
+
+footer p {
+    margin: 0;
+    background: #e6531e;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+/* ===========================
+   RESPONSIVE (solo móvil)
+=========================== */
+@media (max-width: 768px) {
+    .apply h2 {
+        font-size: 2em;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    button[type="submit"] {
+        width: 90%;
+    }
+
+    .apply-button {
+        width: auto;
+        font-size: 1em;
+    }
+}
+
+
+/* Contact section */
 .contact-container {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    padding: 40px 20px;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .contact-item {
     text-align: center;
     background-color: #060606;
-    opacity: 0.8;
-    padding: 80px;
+    opacity: 0.9;
+    padding: 60px 40px;
     border-radius: 10px;
     width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
     font-size: 18px;
     line-height: 1.5;
@@ -693,11 +874,13 @@ button[type="submit"]:hover {
     font-size: 1.1em;
     color: #ffffff;
 }
+
+/* About Us */
 .about-us {
     background-color: #0a0a0a;
     padding: 60px 20px;
     text-align: center;
-    background-image: url("Imagenes/S1.jpg");
+    background-image: url("../Imagenes/S1.jpg"); /* ✅ Corregido: faltaban los dos puntos de ../ */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -726,30 +909,68 @@ button[type="submit"]:hover {
 
 /* Bloques de texto */
 .course-info-about {
-    flex: 1;
-    max-width: 350px;
-    padding: 20px;
-    background: rgba(10, 10, 10, 0.8);
+    flex: 1 1 320px;
+    max-width: 380px;
+    padding: 25px;
+    background: rgba(10, 10, 10, 0.85);
     border-radius: 10px;
-    color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     text-align: left;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Imagen estática */
+/* Sutil efecto al pasar el mouse */
+.course-info-about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagen estática (About Us) centrada */
 .image-slider-about {
     flex: 1 1 600px;
     max-width: 600px;
-    height: 450px;
+    height: 450px; /* ✅ mantiene proporción en desktop */
+    display: flex;
+    justify-content: center;  /* ✅ centra horizontalmente */
+    align-items: center;      /* ✅ centra verticalmente */
     border-radius: 10px;
     overflow: hidden;
+    background: none; /* ✅ elimina fondo negro */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .image-slider-about img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que se ajuste completamente */
+    object-fit: cover;  /* ✅ rellena sin distorsionar */
     display: block;
     border-radius: 10px;
+}
+
+
+/* Animación suave al pasar el cursor sobre la imagen */
+.image-slider-about img:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+}
+
+/* Adaptación responsive */
+@media (max-width: 768px) {
+    .course-info-about {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .image-slider-about {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .image-slider-about img {
+        height: auto;
+        border-radius: 10px;
+    }
+    
 }
