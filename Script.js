@@ -108,4 +108,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startSlideInterval2();
     }
+
+
+    // -------------------------
+    // 🔹 Menú hamburguesa móvil
+    // -------------------------
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    if (menuToggle && navMenu) {
+        // Toggle del menú
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            if (menuOverlay) {
+                menuOverlay.classList.toggle('active');
+            }
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                if (menuOverlay) {
+                    menuOverlay.classList.remove('active');
+                }
+            });
+        });
+
+        // Cerrar menú al hacer click en el overlay
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        }
+    }
 });

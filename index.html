@@ -16,22 +16,36 @@
             <a href="#" class="logo-link">
                 <img src="Imagenes/Logo1.png" alt="Personal Training Logo" class="logo">
             </a>
-            <nav>
+            
+            <!-- Botón hamburguesa (solo móvil) -->
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="nav-menu">
                 <ul>
                     <li><a href="#Home">Home</a></li>
                     <li><a href="#Soccer">Soccer</a></li>
-                    <li><a href="#Tutoring"> Spanish Tutoring</a></li>
+                    <li><a href="#Tutoring">Spanish Tutoring</a></li>
                     <li><a href="#Basketball">Basketball</a></li>
                     <li><a href="#Fitness">Fitness</a></li>
                     <li><a href="#About us">About us</a></li>
                     <li><a href="#Contact">Contact</a></li>
+                    <li class="mobile-instagram">
+                        <a href="https://www.instagram.com/clarkespersonaldevelopment/" target="_blank">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <a href="https://www.instagram.com/clarkespersonaldevelopment/" class="instagram-btn" target="_blank">
+            <a href="https://www.instagram.com/clarkespersonaldevelopment/" class="instagram-btn desktop-instagram" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
-            
         </div>
+        <!-- Overlay para cerrar menú -->
+        <div class="menu-overlay"></div>
     </header>
     <section class="main section" id="Home">
         <h2 class="text-animate">Clarke´s Personal Development</h2>
