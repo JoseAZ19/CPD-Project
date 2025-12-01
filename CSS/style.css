@@ -318,7 +318,7 @@ button.next:hover {
 
 /* Tutoring */
 .Tutoring {
-    background-image: url("../Imagenes/.jpg"); /* ✅ restaurado */
+    background-image: url("../Imagenes/tutoring-bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
