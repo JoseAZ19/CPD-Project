@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
+<body class="apply-page">
     <header>
         <div class="header-container">
             <a href="Index.html" class="logo-link">
@@ -52,7 +52,32 @@
     <section class="apply section">
         <h2 class="text-animate">Apply Now</h2>
         <form action="https://formspree.io/f/xblrgnnz" method="POST" class="application-form text-animate">
-            <!-- FORM ORIGINAL -->
+            <input type="hidden" name="_subject" value="Soccer - New Application">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(757) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age (optional)</label>
+                    <input type="number" id="age" name="age" min="5" max="99" placeholder="Age">
+                </div>
+            </div>
+            <div class="form-group" style="width: 100%;">
+                <label for="message">Message / Interest in program *</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your goals and availability..."></textarea>
+            </div>
+            <button type="submit">Submit Application</button>
         </form>
     </section>
     <footer>

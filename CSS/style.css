@@ -51,6 +51,23 @@ body::after {
     z-index: -1;
 }
 
+/* Páginas Apply: fondo continuo, sin imagen de main para que no se vea cortada */
+body.apply-page::before,
+body.apply-page::after {
+    display: none;
+}
+body.apply-page {
+    background: #0a0a0a;
+    min-height: 100vh;
+}
+body.apply-page .apply {
+    padding-top: 100px;
+    min-height: calc(100vh - 120px);
+}
+body.apply-page footer {
+    margin-top: 0;
+}
+
 /* Secciones generales */
 .section {
     opacity: 0;
