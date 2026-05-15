@@ -250,6 +250,52 @@ button {
     display: none;
 }
 
+/* Header actions wrapper */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+}
+
+/* Language toggle */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: 7px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.lang-toggle:hover {
+    background: rgba(230, 83, 30, 0.1);
+    border-color: var(--brand);
+}
+
+.lang-flag {
+    transition: color 0.2s var(--ease);
+}
+
+.lang-flag.inactive {
+    color: var(--text-dim);
+}
+
+.lang-toggle:hover .lang-flag.inactive {
+    color: var(--text-muted);
+}
+
+.lang-divider {
+    width: 1px;
+    height: 12px;
+    background: var(--border-strong);
+}
+
 /* Instagram desktop */
 .instagram-btn {
     display: inline-flex;
@@ -1017,6 +1063,152 @@ button {
 }
 
 /* =============================================================
+   Testimonials
+   ============================================================= */
+.testimonials {
+    padding: var(--s-9) 0;
+    background: #060608;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(230, 83, 30, 0.08), transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(230, 83, 30, 0.06), transparent 50%);
+    pointer-events: none;
+}
+
+.testimonials > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--s-5);
+}
+
+.testimonial-card {
+    position: relative;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--s-6) var(--s-5) var(--s-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    transition: transform 0.4s var(--ease), border-color 0.3s var(--ease), box-shadow 0.4s var(--ease);
+    overflow: hidden;
+}
+
+.testimonial-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand) 0%, var(--brand-hover) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--brand);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-card:hover::before {
+    transform: scaleX(1);
+}
+
+.testimonial-quote-mark {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(230, 83, 30, 0.12);
+    color: var(--brand);
+    border-radius: 12px;
+    font-size: 1.1rem;
+}
+
+.testimonial-quote {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--text);
+    flex-grow: 1;
+    font-style: italic;
+    quotes: none;
+}
+
+.testimonial-quote::before,
+.testimonial-quote::after {
+    content: "";
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding-top: var(--s-4);
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+}
+
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 12px var(--brand-glow);
+    flex-shrink: 0;
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-meta strong {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.testimonial-meta span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.testimonial-stars {
+    color: var(--brand);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: var(--s-5) var(--s-4) var(--s-4);
+    }
+}
+
+/* =============================================================
    About
    ============================================================= */
 .about {
@@ -1394,6 +1586,41 @@ button {
     color: var(--text-dim);
 }
 
+/* "Soon" options open the waitlist instead of being disabled */
+.modal-option.soon {
+    cursor: pointer;
+    background: var(--surface-2);
+    border-color: var(--border);
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+}
+
+.modal-option.soon .modal-icon {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border-color: var(--border-strong);
+}
+
+.modal-option.soon:hover {
+    border-color: var(--brand);
+    transform: translateY(-3px);
+    background: var(--surface-3);
+}
+
+.modal-option.soon:hover .modal-icon {
+    background: rgba(230, 83, 30, 0.14);
+    color: var(--brand);
+    border-color: rgba(230, 83, 30, 0.3);
+}
+
+.modal-option.soon:hover .modal-tag {
+    background: rgba(230, 83, 30, 0.15);
+    color: var(--brand);
+    border-color: rgba(230, 83, 30, 0.35);
+}
+
 .modal-tag {
     flex: 0 0 auto;
     background: rgba(255, 255, 255, 0.06);
@@ -1440,13 +1667,103 @@ button {
     }
 }
 
+/* Waitlist modal */
+.modal-content-sm {
+    max-width: 460px;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+}
+
+.waitlist-form .form-group {
+    gap: var(--s-2);
+}
+
+.waitlist-form button[type="submit"] {
+    margin-top: var(--s-2);
+}
+
+.waitlist-program-name {
+    color: var(--brand);
+}
+
+.waitlist-program-name:empty {
+    display: none;
+}
+
+.waitlist-program-name::before {
+    content: " — ";
+    color: var(--text-dim);
+}
+
+.waitlist-success {
+    text-align: center;
+    padding: var(--s-4) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-3);
+}
+
+.waitlist-success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 24px var(--brand-glow);
+    margin-bottom: var(--s-2);
+    animation: waitlistPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes waitlistPop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.waitlist-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.02em;
+}
+
+.waitlist-success p {
+    color: var(--text-muted);
+    max-width: 320px;
+    font-size: 0.95rem;
+}
+
 /* =============================================================
-   Floating CTA
+   Floating actions (Apply + WhatsApp)
    ============================================================= */
-.floating-cta {
+.floating-actions {
     position: fixed;
     bottom: var(--s-5);
     right: var(--s-5);
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    z-index: 900;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.floating-actions.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.floating-cta {
     display: inline-flex;
     align-items: center;
     gap: var(--s-2);
@@ -1457,22 +1774,64 @@ button {
     font-weight: 600;
     font-size: 0.95rem;
     box-shadow: 0 12px 32px var(--brand-glow);
-    z-index: 900;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s var(--ease);
-}
-
-.floating-cta.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+    transition: background 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
 .floating-cta:hover {
     background: var(--brand-hover);
     transform: translateY(-2px);
+}
+
+.floating-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+    transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+    position: relative;
+}
+
+.floating-whatsapp::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    opacity: 0.4;
+    animation: whatsappPulse 2.2s ease-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+.floating-whatsapp:hover {
+    background: #1eb955;
+    transform: translateY(-2px) scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .floating-actions {
+        bottom: var(--s-4);
+        right: var(--s-4);
+        gap: var(--s-2);
+    }
+    .floating-whatsapp {
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+    }
+    .floating-cta {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
 }
 
 /* =============================================================
