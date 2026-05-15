@@ -60,7 +60,7 @@
             </h1>
             <p class="hero-sub">Elite soccer development, native-speaker Spanish tutoring, and personalized coaching for athletes who believe in their potential.</p>
             <div class="hero-cta">
-                <a href="Apply.html" class="btn btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+                <button type="button" class="btn btn-primary" data-open-modal="program-picker">Apply Now <i class="fas fa-arrow-right"></i></button>
                 <a href="#programs" class="btn btn-ghost">Explore Programs</a>
             </div>
             <div class="hero-stats">
@@ -268,9 +268,59 @@
     </section>
 
     <!-- Floating CTA -->
-    <a href="Apply.html" class="floating-cta" aria-label="Apply now">
+    <button type="button" class="floating-cta" aria-label="Apply to a program" data-open-modal="program-picker">
         <i class="fas fa-paper-plane"></i> Apply
-    </a>
+    </button>
+
+    <!-- Program picker modal -->
+    <div class="modal" id="program-picker" aria-hidden="true" role="dialog" aria-labelledby="program-picker-title" aria-modal="true">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-content" role="document">
+            <button type="button" class="modal-close" data-close-modal aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-head">
+                <span class="kicker">Apply</span>
+                <h3 id="program-picker-title">Choose your program</h3>
+                <p>Which one are you applying for?</p>
+            </div>
+            <div class="modal-grid">
+                <a href="Apply.html" class="modal-option">
+                    <span class="modal-icon"><i class="fas fa-futbol"></i></span>
+                    <div class="modal-option-body">
+                        <h4>Soccer</h4>
+                        <p>Personal training &amp; group sessions</p>
+                    </div>
+                    <span class="modal-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="ApplyTutoring.html" class="modal-option">
+                    <span class="modal-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <div class="modal-option-body">
+                        <h4>Spanish Tutoring</h4>
+                        <p>1-on-1 with native tutors</p>
+                    </div>
+                    <span class="modal-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <div class="modal-option disabled" aria-disabled="true" tabindex="-1">
+                    <span class="modal-icon"><i class="fas fa-basketball-ball"></i></span>
+                    <div class="modal-option-body">
+                        <h4>Basketball</h4>
+                        <p>Launching soon</p>
+                    </div>
+                    <span class="modal-tag">Soon</span>
+                </div>
+                <div class="modal-option disabled" aria-disabled="true" tabindex="-1">
+                    <span class="modal-icon"><i class="fas fa-dumbbell"></i></span>
+                    <div class="modal-option-body">
+                        <h4>Fitness</h4>
+                        <p>Launching soon</p>
+                    </div>
+                    <span class="modal-tag">Soon</span>
+                </div>
+            </div>
+            <p class="modal-foot">Basketball &amp; Fitness are not open for applications yet — <a href="#contact" data-close-modal>contact us</a> to be notified.</p>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="container">

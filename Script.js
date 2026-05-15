@@ -152,6 +152,50 @@ document.addEventListener('DOMContentLoaded', () => {
         visObserver.observe(carousel);
     });
 
+    // Modals (open via data-open-modal, close via data-close-modal)
+    const openModal = (modal) => {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        const firstFocusable = modal.querySelector('.modal-option:not(.disabled), .modal-close');
+        setTimeout(() => firstFocusable?.focus(), 220);
+    };
+
+    const closeModal = (modal) => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-open-modal]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modal = document.getElementById(btn.dataset.openModal);
+            if (modal) openModal(modal);
+        });
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            const modal = el.closest('.modal');
+            if (!modal) return;
+            // Allow anchor-style data-close-modal links to still navigate
+            if (el.tagName === 'A' && el.getAttribute('href')) {
+                closeModal(modal);
+                return; // let the anchor handle navigation
+            }
+            e.preventDefault();
+            closeModal(modal);
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const active = document.querySelector('.modal.active');
+            if (active) closeModal(active);
+        }
+    });
+
     // Mobile menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
