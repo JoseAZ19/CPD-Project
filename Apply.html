@@ -20,37 +20,43 @@
                 <span class="logo-text">Clarke's Personal Development</span>
             </a>
 
-            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
             <nav class="nav-menu" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#programs">Programs</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="index.html#programs" data-i18n="nav.programs">Programs</a></li>
+                    <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
                     <li class="mobile-instagram">
                         <a href="https://www.instagram.com/clarkespersonaldevelopment/" target="_blank" rel="noopener">
-                            <i class="fab fa-instagram"></i> Instagram
+                            <i class="fab fa-instagram"></i> <span data-i18n="nav.instagram">Instagram</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <a href="https://www.instagram.com/clarkespersonaldevelopment/" class="instagram-btn desktop-instagram" target="_blank" rel="noopener" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
+            <div class="header-actions">
+                <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language">
+                    <span class="lang-flag">EN</span>
+                    <span class="lang-divider"></span>
+                    <span class="lang-flag inactive">ES</span>
+                </button>
+                <a href="https://www.instagram.com/clarkespersonaldevelopment/" class="instagram-btn desktop-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
         <div class="menu-overlay"></div>
     </header>
 
     <section class="apply-hero soccer">
         <div class="apply-hero-content">
-            <span class="kicker">Soccer Training</span>
-            <h1>Apply <span class="accent">Now</span></h1>
-            <p>Tell us about yourself and we'll get back to you with rates and schedule. All fields marked <span style="color: var(--brand)">*</span> are required.</p>
+            <span class="kicker" data-i18n="apply.soccerKicker">Soccer Training</span>
+            <h1><span data-i18n="apply.title">Apply</span> <span class="accent" data-i18n="apply.titleAccent">Now</span></h1>
+            <p><span data-i18n="apply.soccerSub">Tell us about yourself and we'll get back to you with rates and schedule.</span> <span data-i18n="apply.required">All fields marked</span> <span style="color: var(--brand)">*</span> <span data-i18n="apply.requiredEnd">are required.</span></p>
         </div>
     </section>
 
@@ -60,98 +66,98 @@
             <input type="hidden" name="_status" value="new">
 
             <div class="form-section">
-                <h3 class="form-section-title">Personal Information</h3>
+                <h3 class="form-section-title" data-i18n="apply.sections.personal">Personal Information</h3>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="full-name">Full name <span class="req">*</span></label>
-                        <input type="text" id="full-name" name="full-name" required placeholder="Player full name">
+                        <label for="full-name"><span data-i18n="apply.fields.fullName">Full name</span> <span class="req">*</span></label>
+                        <input type="text" id="full-name" name="full-name" required data-i18n-attr="placeholder:apply.fields.fullNamePh" placeholder="Player full name">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email <span class="req">*</span></label>
+                        <label for="email"><span data-i18n="apply.fields.email">Email</span> <span class="req">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="your@email.com">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="mobile-number">Mobile number <span class="req">*</span></label>
+                        <label for="mobile-number"><span data-i18n="apply.fields.mobile">Mobile number</span> <span class="req">*</span></label>
                         <input type="tel" id="mobile-number" name="mobile-number" required placeholder="(757) 000-0000">
                     </div>
                     <div class="form-group">
-                        <label for="dob">Date of birth <span class="req">*</span></label>
+                        <label for="dob"><span data-i18n="apply.fields.dob">Date of birth</span> <span class="req">*</span></label>
                         <input type="date" id="dob" name="dob" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="address">Address <span class="req">*</span></label>
-                        <input type="text" id="address" name="address" required placeholder="Street, city, state">
+                        <label for="address"><span data-i18n="apply.fields.address">Address</span> <span class="req">*</span></label>
+                        <input type="text" id="address" name="address" required data-i18n-attr="placeholder:apply.fields.addressPh" placeholder="Street, city, state">
                     </div>
                     <div class="form-group">
-                        <label for="nationality">Nationality <span class="req">*</span></label>
-                        <input type="text" id="nationality" name="nationality" required placeholder="Nationality">
+                        <label for="nationality"><span data-i18n="apply.fields.nationality">Nationality</span> <span class="req">*</span></label>
+                        <input type="text" id="nationality" name="nationality" required data-i18n-attr="placeholder:apply.fields.nationalityPh" placeholder="Nationality">
                     </div>
                 </div>
             </div>
 
             <div class="form-section">
-                <h3 class="form-section-title">Player Profile</h3>
+                <h3 class="form-section-title" data-i18n="apply.sections.player">Player Profile</h3>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="height">Height <span class="req">*</span></label>
+                        <label for="height"><span data-i18n="apply.fields.height">Height</span> <span class="req">*</span></label>
                         <input type="text" id="height" name="height" required placeholder="e.g. 5'8&quot; or 173 cm">
                     </div>
                     <div class="form-group">
-                        <label for="weight">Weight <span class="req">*</span></label>
+                        <label for="weight"><span data-i18n="apply.fields.weight">Weight</span> <span class="req">*</span></label>
                         <input type="text" id="weight" name="weight" required placeholder="e.g. 150 lb or 68 kg">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="dominant-foot">Dominant foot <span class="req">*</span></label>
+                        <label for="dominant-foot"><span data-i18n="apply.fields.dominantFoot">Dominant foot</span> <span class="req">*</span></label>
                         <select id="dominant-foot" name="dominant-foot" required>
-                            <option value="">Select...</option>
-                            <option value="right">Right</option>
-                            <option value="left">Left</option>
-                            <option value="both">Both</option>
+                            <option value="" data-i18n="apply.select">Select...</option>
+                            <option value="right" data-i18n="apply.foot.right">Right</option>
+                            <option value="left" data-i18n="apply.foot.left">Left</option>
+                            <option value="both" data-i18n="apply.foot.both">Both</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="position">Position <span class="req">*</span></label>
+                        <label for="position"><span data-i18n="apply.fields.position">Position</span> <span class="req">*</span></label>
                         <select id="position" name="position" required>
-                            <option value="">Select position...</option>
-                            <option value="goalkeeper">Goalkeeper</option>
-                            <option value="center-back">Center Back</option>
-                            <option value="left-back">Left Back</option>
-                            <option value="right-back">Right Back</option>
-                            <option value="defensive-midfielder">Defensive Midfielder</option>
-                            <option value="central-midfielder">Central Midfielder</option>
-                            <option value="attacking-midfielder">Attacking Midfielder</option>
-                            <option value="left-winger">Left Winger</option>
-                            <option value="right-winger">Right Winger</option>
-                            <option value="forward">Forward / Striker</option>
+                            <option value="" data-i18n="apply.selectPosition">Select position...</option>
+                            <option value="goalkeeper" data-i18n="apply.positions.gk">Goalkeeper</option>
+                            <option value="center-back" data-i18n="apply.positions.cb">Center Back</option>
+                            <option value="left-back" data-i18n="apply.positions.lb">Left Back</option>
+                            <option value="right-back" data-i18n="apply.positions.rb">Right Back</option>
+                            <option value="defensive-midfielder" data-i18n="apply.positions.dm">Defensive Midfielder</option>
+                            <option value="central-midfielder" data-i18n="apply.positions.cm">Central Midfielder</option>
+                            <option value="attacking-midfielder" data-i18n="apply.positions.am">Attacking Midfielder</option>
+                            <option value="left-winger" data-i18n="apply.positions.lw">Left Winger</option>
+                            <option value="right-winger" data-i18n="apply.positions.rw">Right Winger</option>
+                            <option value="forward" data-i18n="apply.positions.fw">Forward / Striker</option>
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="form-section">
-                <h3 class="form-section-title">Program &amp; Preferences</h3>
+                <h3 class="form-section-title" data-i18n="apply.sections.program">Program &amp; Preferences</h3>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="program">Program <span class="req">*</span></label>
+                        <label for="program"><span data-i18n="apply.fields.program">Program</span> <span class="req">*</span></label>
                         <select id="program" name="program" required>
-                            <option value="">Select program...</option>
-                            <option value="group-sessions">Group Sessions</option>
-                            <option value="private-1-on-1">Private 1-on-1 Sessions</option>
-                            <option value="semi-private">Semi-private (2-4 players)</option>
-                            <option value="technical-skills">Technical Skills Program</option>
-                            <option value="strength-conditioning">Strength &amp; Conditioning</option>
+                            <option value="" data-i18n="apply.selectProgram">Select program...</option>
+                            <option value="group-sessions" data-i18n="apply.programs.group">Group Sessions</option>
+                            <option value="private-1-on-1" data-i18n="apply.programs.private">Private 1-on-1 Sessions</option>
+                            <option value="semi-private" data-i18n="apply.programs.semi">Semi-private (2-4 players)</option>
+                            <option value="technical-skills" data-i18n="apply.programs.technical">Technical Skills Program</option>
+                            <option value="strength-conditioning" data-i18n="apply.programs.strength">Strength &amp; Conditioning</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="tshirt-size">T-shirt size <span class="req">*</span></label>
+                        <label for="tshirt-size"><span data-i18n="apply.fields.tshirtSize">T-shirt size</span> <span class="req">*</span></label>
                         <select id="tshirt-size" name="tshirt-size" required>
-                            <option value="">Select...</option>
+                            <option value="" data-i18n="apply.select">Select...</option>
                             <option value="XS">XS</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
@@ -162,29 +168,29 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="instagram">Instagram</label>
+                        <label for="instagram" data-i18n="apply.fields.instagram">Instagram</label>
                         <input type="text" id="instagram" name="instagram" placeholder="@username">
                     </div>
                     <div class="form-group">
-                        <label for="commitment">Commitment level <span class="req">*</span></label>
+                        <label for="commitment"><span data-i18n="apply.fields.commitment">Commitment level</span> <span class="req">*</span></label>
                         <select id="commitment" name="commitment" required>
-                            <option value="">Select...</option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
+                            <option value="" data-i18n="apply.select">Select...</option>
+                            <option value="low" data-i18n="apply.commitment.low">Low</option>
+                            <option value="medium" data-i18n="apply.commitment.medium">Medium</option>
+                            <option value="high" data-i18n="apply.commitment.high">High</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group full">
-                        <label for="history">Background &amp; goals <span class="req">*</span></label>
-                        <textarea id="history" name="history" required placeholder="Tell us about your soccer background, any injuries, and what you want to achieve..."></textarea>
+                        <label for="history"><span data-i18n="apply.fields.history">Background &amp; goals</span> <span class="req">*</span></label>
+                        <textarea id="history" name="history" required data-i18n-attr="placeholder:apply.fields.historyPh" placeholder="Tell us about your soccer background, any injuries, and what you want to achieve..."></textarea>
                     </div>
                 </div>
             </div>
 
             <button type="submit">
-                <i class="fas fa-paper-plane"></i> Submit Application
+                <i class="fas fa-paper-plane"></i> <span data-i18n="apply.submit">Submit Application</span>
             </button>
         </form>
     </div>
@@ -194,23 +200,24 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="Imagenes/Logo3.png" alt="" class="logo">
-                    <p>Clarke's Personal Development — elite soccer development, Spanish tutoring, and coaching that believes in your potential.</p>
+                    <p data-i18n="footer.tagline">Clarke's Personal Development — elite soccer development, Spanish tutoring, and coaching that believes in your potential.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="index.html#home">Home</a>
-                    <a href="index.html#programs">Programs</a>
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="index.html#home" data-i18n="nav.home">Home</a>
+                    <a href="index.html#programs" data-i18n="nav.programs">Programs</a>
+                    <a href="index.html#about" data-i18n="nav.about">About</a>
+                    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
                 </div>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/clarkespersonaldevelopment/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Clarke's Personal Development. All rights reserved.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Clarke's Personal Development. All rights reserved.</p>
             </div>
         </div>
     </footer>
+    <script src="i18n.js"></script>
     <script src="Script.js"></script>
 </body>
 </html>

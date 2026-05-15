@@ -23,18 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', onScroll, { passive: true });
     }
 
-    // Floating CTA visibility — show after hero
-    const floatingCta = document.querySelector('.floating-cta');
+    // Floating actions visibility — show after hero
+    const floatingActions = document.querySelector('.floating-actions');
     const hero = document.querySelector('.hero');
-    if (floatingCta && hero) {
+    if (floatingActions && hero) {
         const ctaObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                floatingCta.classList.toggle('visible', !entry.isIntersecting);
+                floatingActions.classList.toggle('visible', !entry.isIntersecting);
             });
         }, { threshold: 0.3 });
         ctaObserver.observe(hero);
-    } else if (floatingCta) {
-        floatingCta.classList.add('visible');
+    } else if (floatingActions) {
+        floatingActions.classList.add('visible');
     }
 
     // Carousel(s) — auto-rotate with progress bar, counter, slide overlay animation, swipe, hover-pause
@@ -171,9 +171,58 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const modal = document.getElementById(btn.dataset.openModal);
-            if (modal) openModal(modal);
+            if (!modal) return;
+            // Close any currently-open modal first so transitions chain cleanly
+            const currentlyOpen = document.querySelector('.modal.active');
+            if (currentlyOpen && currentlyOpen !== modal) closeModal(currentlyOpen);
+
+            // Waitlist: pass the program name and reset to form state
+            if (modal.id === 'waitlist') {
+                const program = btn.dataset.program || '';
+                const nameSlot = modal.querySelector('.waitlist-program-name');
+                const programInput = modal.querySelector('.waitlist-program-input');
+                if (nameSlot) nameSlot.textContent = program;
+                if (programInput) programInput.value = program;
+                modal.querySelector('.waitlist-form-state')?.removeAttribute('hidden');
+                modal.querySelector('.waitlist-success-state')?.setAttribute('hidden', '');
+                modal.querySelector('.waitlist-form')?.reset();
+            }
+
+            openModal(modal);
         });
     });
+
+    // Waitlist form: submit via fetch, show success inline
+    const waitlistForm = document.querySelector('.waitlist-form');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+            const originalHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            try {
+                const data = new FormData(waitlistForm);
+                const res = await fetch(waitlistForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    const modal = waitlistForm.closest('.modal');
+                    modal?.querySelector('.waitlist-form-state')?.setAttribute('hidden', '');
+                    modal?.querySelector('.waitlist-success-state')?.removeAttribute('hidden');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (err) {
+                alert('Sorry, something went wrong. Please try again or contact us directly.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHtml;
+            }
+        });
+    }
 
     document.querySelectorAll('[data-close-modal]').forEach(el => {
         el.addEventListener('click', (e) => {
