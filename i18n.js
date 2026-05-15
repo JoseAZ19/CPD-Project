@@ -11,11 +11,11 @@ const translations = {
             instagram: "Instagram"
         },
         hero: {
-            kicker: "Personal Development",
+            kicker: "Clarke's Personal Development",
             t1: "Train.",
             t2: "Learn.",
             t3: "Grow.",
-            sub: "Elite soccer development, native-speaker Spanish tutoring, and personalized coaching for athletes who believe in their potential.",
+            sub: "Elite soccer development for beginners to semi-pro, native-speaker Spanish tutoring, and personalized coaching for athletes who believe in their potential.",
             applyNow: "Apply Now",
             explore: "Explore Programs",
             stat1Val: "1-on-1",
@@ -208,11 +208,11 @@ const translations = {
             instagram: "Instagram"
         },
         hero: {
-            kicker: "Desarrollo Personal",
+            kicker: "Clarke's Personal Development",
             t1: "Entrená.",
             t2: "Aprendé.",
             t3: "Crecé.",
-            sub: "Desarrollo de fútbol de élite, tutorías de español con profesores nativos y coaching personalizado para atletas que creen en su potencial.",
+            sub: "Desarrollo de fútbol de élite para principiantes hasta semi-profesional, tutorías de español con profesores nativos y coaching personalizado para atletas que creen en su potencial.",
             applyNow: "Aplicar ahora",
             explore: "Ver programas",
             stat1Val: "1 a 1",
