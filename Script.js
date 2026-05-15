@@ -37,6 +37,121 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingCta.classList.add('visible');
     }
 
+    // Carousel(s) — auto-rotate with progress bar, counter, slide overlay animation, swipe, hover-pause
+    const carousels = document.querySelectorAll('[data-carousel]');
+    carousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const progressBar = carousel.querySelector('.progress-bar');
+        const counterCurrent = carousel.querySelector('.counter-current');
+        const counterTotal = carousel.querySelector('.counter-total');
+        if (!track || slides.length < 2) return;
+
+        const total = slides.length;
+        let index = 0;
+        let timer;
+        const styles = getComputedStyle(carousel);
+        const durationStr = styles.getPropertyValue('--slide-duration').trim() || '5500ms';
+        const delay = parseInt(durationStr, 10) || 5500;
+
+        const pad = (n) => String(n + 1).padStart(2, '0');
+        if (counterTotal) counterTotal.textContent = pad(total - 1);
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => { go(i); restart(); });
+            dotsContainer?.appendChild(dot);
+        });
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+
+        // mark first slide active
+        slides[0].classList.add('is-active');
+
+        const updateProgress = () => {
+            if (!progressBar) return;
+            progressBar.classList.remove('run');
+            // force reflow to restart transition
+            // eslint-disable-next-line no-unused-expressions
+            progressBar.offsetWidth;
+            progressBar.classList.add('run');
+        };
+
+        const go = (n) => {
+            index = (n + total) % total;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            if (counterCurrent) counterCurrent.textContent = pad(index);
+            updateProgress();
+        };
+        const next = () => go(index + 1);
+        const prev = () => go(index - 1);
+
+        const start = () => {
+            carousel.classList.remove('paused');
+            updateProgress();
+            timer = setInterval(next, delay);
+        };
+        const stop = () => {
+            clearInterval(timer);
+            carousel.classList.add('paused');
+            if (progressBar) {
+                // freeze current progress visually
+                const computed = getComputedStyle(progressBar).transform;
+                progressBar.classList.remove('run');
+                progressBar.style.transform = computed === 'none' ? 'scaleX(0)' : computed;
+            }
+        };
+        const restart = () => {
+            clearInterval(timer);
+            if (progressBar) progressBar.style.transform = '';
+            start();
+        };
+
+        prevBtn?.addEventListener('click', () => { prev(); restart(); });
+        nextBtn?.addEventListener('click', () => { next(); restart(); });
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', () => {
+            if (progressBar) progressBar.style.transform = '';
+            start();
+        });
+
+        // Keyboard support
+        carousel.setAttribute('tabindex', '0');
+        carousel.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { prev(); restart(); }
+            if (e.key === 'ArrowRight') { next(); restart(); }
+        });
+
+        // Touch swipe
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stop();
+        }, { passive: true });
+        carousel.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(delta) > 40) (delta < 0 ? next() : prev());
+            if (progressBar) progressBar.style.transform = '';
+            start();
+        }, { passive: true });
+
+        // Start when carousel scrolls into view, pause when out
+        const visObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) start();
+                else stop();
+            });
+        }, { threshold: 0.2 });
+        visObserver.observe(carousel);
+    });
+
     // Mobile menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
